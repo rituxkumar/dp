@@ -1,10 +1,13 @@
 class Solution {
 public:
     int dp[301][301];
-    int M = 1e9+7;
+    int M = 1e9 + 7;
     int solve(int n, int num, int x) {
         if (n == 0) {
             return 1;
+        }
+        if (n < 0) {
+            return 0;
         }
         int currPow = pow(num, x);
         if (currPow > n) {
@@ -18,7 +21,7 @@ public:
 
         int skip = solve(n, num + 1, x);
 
-        return dp[n][num] = (take + skip)%M;
+        return dp[n][num] = (take + skip) % M;
     }
     int numberOfWays(int n, int x) {
         memset(dp, -1, sizeof(dp));
